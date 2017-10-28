@@ -1,0 +1,39 @@
+Port 22
+AddressFamily any
+ListenAddress 0.0.0.0
+ListenAddress ::
+
+Protocol 2
+
+HostKey /data/ssh/ssh_host_ed25519_key
+
+LogLevel INFO
+
+PermitRootLogin no
+StrictModes yes
+MaxAuthTries 3
+MaxSessions 5
+
+PubkeyAuthentication yes
+AuthorizedKeysFile %h/.ssh/authorized_keys
+
+HostbasedAuthentication no
+IgnoreUserKnownHosts yes
+IgnoreRhosts yes
+
+PasswordAuthentication no
+ChallengeResponseAuthentication no
+
+AllowAgentForwarding no
+AllowTcpForwarding no
+GatewayPorts no
+X11Forwarding no
+PrintMotd no
+PermitUserEnvironment no
+UseDNS no
+
+AllowUsers git
+
+Banner none
+
+Subsystem sftp /usr/lib/ssh/sftp-server

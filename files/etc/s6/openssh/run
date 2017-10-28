@@ -1,0 +1,20 @@
+#!/bin/sh
+
+set -eu
+
+# setup
+
+if [ ! -d '/data/ssh' ]; then
+  /bin/echo 'Creating /data/ssh directory'
+  /bin/mkdir -m 0700 '/data/ssh'
+fi
+
+if [ ! -f '/data/ssh/ssh_host_ed25519_key' ]; then
+  /bin/echo 'Generating server key'
+  /usr/bin/ssh-keygen -t ed25519 -f '/data/ssh/ssh_host_ed25519_key' -N '' > /dev/null
+  /bin/chmod 0600 '/data/ssh/ssh_host_ed25519_key'
+fi
+
+# run
+
+exec /usr/sbin/sshd -D

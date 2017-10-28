@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set -eu
+
+if [ $# -eq 0 ]; then
+  exec /bin/s6-svscan /etc/s6
+else
+  exec /sbin/su-exec "$@"
+fi

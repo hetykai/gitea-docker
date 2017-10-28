@@ -1,0 +1,7 @@
+#!/bin/sh
+
+set -eu
+
+# run
+
+exec /sbin/syslogd -nS -O -
