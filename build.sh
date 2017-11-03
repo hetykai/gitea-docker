@@ -2,7 +2,7 @@
 
 set -eu
 
-gitea_version='1.2.2'
+gitea_version='1.2.3'
 gitea_build_tags='bindata sqlite'
 gitea_repo_url='https://github.com/go-gitea/gitea.git'
 golang_version='1.9'
