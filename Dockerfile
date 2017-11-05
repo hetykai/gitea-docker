@@ -37,8 +37,8 @@ RUN set -eu && apk --no-cache add \
                tzdata
 RUN set -eu && addgroup -S -g 1000 git \
             && adduser -S -D -G git -u 1000 -s '/bin/bash' -H -h '/data/git' git
-RUN set -eu && echo "root:$(head -c 32 /dev/urandom | base64)" | chpasswd \
-            && echo "git:$(head -c 32 /dev/urandom | base64)" | chpasswd
+RUN set -euo pipefail && echo "root:$(head -c 32 /dev/urandom | base64)" | chpasswd \
+                      && echo "git:$(head -c 32 /dev/urandom | base64)" | chpasswd
 
 COPY --from=builder "/go/src/code.gitea.io/gitea/gitea" "/usr/local/bin/gitea"
 COPY files /
