@@ -1,6 +1,4 @@
-ARG golang_version
-ARG alpine_version
-FROM "golang:${golang_version}-alpine${alpine_version}" as builder
+FROM golang:1.9-alpine3.6 as builder
 
 RUN set -eu; apk --no-cache add \
              gcc \
@@ -21,8 +19,7 @@ RUN set -eu; git clone --branch "v${gitea_version}" --depth 1 --no-checkout "$gi
 ARG gitea_build_tags
 RUN set -eu; TAGS="$gitea_build_tags" make generate build
 
-ARG alpine_version
-FROM "alpine:${alpine_version}"
+FROM alpine:3.6
 
 LABEL maintainer="Piotr Orzechowski [orzechowski.tech]"
 
