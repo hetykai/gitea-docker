@@ -12,9 +12,11 @@ ENV GOPATH="/go"
 ENV SRC_DIR="${GOPATH}/src/code.gitea.io/gitea"
 WORKDIR "$SRC_DIR"
 
-ARG gitea_repo_url
 ARG gitea_version
-RUN set -eu; git clone --branch "v${gitea_version}" --depth 1 "$gitea_repo_url" "$SRC_DIR"
+ARG gitea_checksum
+ARG gitea_repo_url
+RUN set -eu; git clone --branch "v${gitea_version}" --depth 1 --no-checkout "$gitea_repo_url" .; \
+             git checkout "$gitea_checksum"
 
 ARG gitea_build_tags
 RUN set -eu; TAGS="$gitea_build_tags" make generate build
