@@ -2,8 +2,8 @@
 
 set -eu
 
-gitea_version='1.2.3'
-gitea_checksum='09bd05732de61930c99509ee5a25816895f430a8'
+gitea_version='1.3.0'
+gitea_checksum='974cffead9b8e6bb554ea458a90aac8203907a55'
 gitea_build_tags='bindata sqlite'
 gitea_repo_url='https://github.com/go-gitea/gitea.git'
 image_name='orzech/gitea'
