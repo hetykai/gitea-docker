@@ -45,7 +45,6 @@ COPY files /
 VOLUME ["/data"]
 
 ENV GITEA_CUSTOM="/data/gitea"
-ENV GODEBUG="netdns=go"
 
 ENTRYPOINT ["/usr/local/bin/entrypoint"]
 
