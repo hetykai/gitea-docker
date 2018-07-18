@@ -12,11 +12,11 @@ WORKDIR "$SRC_DIR"
 
 ARG GITEA_VERSION
 ARG GITEA_CHECKSUM
-ARG GITEA_REPO_URL
+ARG GITEA_REPO_URL="https://github.com/go-gitea/gitea.git"
 RUN set -eu; git clone --branch "v${GITEA_VERSION}" --depth 1 --no-checkout "$GITEA_REPO_URL" .; \
              git checkout "$GITEA_CHECKSUM"
 
-ARG GITEA_BUILD_TAGS
+ARG GITEA_BUILD_TAGS="bindata sqlite"
 RUN set -eu; TAGS="$GITEA_BUILD_TAGS" make generate build
 
 FROM alpine:3.8
