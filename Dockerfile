@@ -1,4 +1,4 @@
-FROM golang:1.9-alpine3.7 as builder
+FROM golang:1.10-alpine3.8 as builder
 
 RUN set -eu; apk --no-cache add \
              gcc \
@@ -19,7 +19,7 @@ RUN set -eu; git clone --branch "v${GITEA_VERSION}" --depth 1 --no-checkout "$GI
 ARG GITEA_BUILD_TAGS
 RUN set -eu; TAGS="$GITEA_BUILD_TAGS" make generate build
 
-FROM alpine:3.7
+FROM alpine:3.8
 
 LABEL maintainer="Piotr Orzechowski [orzechowski.tech]"
 
