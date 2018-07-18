@@ -10,9 +10,9 @@ image_name='orzech/gitea'
 
 docker build \
   --disable-content-trust=false \
-  --build-arg gitea_version="$gitea_version" \
-  --build-arg gitea_checksum="$gitea_checksum" \
-  --build-arg gitea_build_tags="$gitea_build_tags" \
-  --build-arg gitea_repo_url="$gitea_repo_url" \
+  --build-arg GITEA_VERSION="$gitea_version" \
+  --build-arg GITEA_CHECKSUM="$gitea_checksum" \
+  --build-arg GITEA_BUILD_TAGS="$gitea_build_tags" \
+  --build-arg GITEA_REPO_URL="$gitea_repo_url" \
   -t "${IMAGE_NAME:-${image_name}}" \
   .
