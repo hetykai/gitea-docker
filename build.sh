@@ -10,4 +10,5 @@ docker build \
   -t "$DOCKER_REPO:$gitea_version" \
   .
 
-docker push $DOCKER_REPO:latest $DOCKER_REPO:$gitea_version
+docker push $DOCKER_REPO:$gitea_version
+docker push $DOCKER_REPO:latest
