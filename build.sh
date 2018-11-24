@@ -7,6 +7,6 @@ image_name='hety/gitea'
 
 docker build \
   --build-arg GITEA_VERSION="$gitea_version" \
-  -t "${IMAGE_NAME:-${image_name}}" \
+  -t "$image_name:latest" \
   -t "$image_name:$gitea_version" \
   .
