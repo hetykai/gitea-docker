@@ -19,8 +19,6 @@ RUN set -eu; git clone --branch "v${GITEA_VERSION}" --depth 1 --no-checkout "$GI
 ARG GITEA_BUILD_TAGS="bindata sqlite"
 RUN set -eu; TAGS="$GITEA_BUILD_TAGS" make generate build
 
-FROM alpine:3.8
-
 FROM alpine
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/' /etc/apk/repositories && sed -i 's/http:/https:/' /etc/apk/repositories
 RUN set -eu; apk --no-cache add \
