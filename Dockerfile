@@ -1,5 +1,5 @@
-FROM golang:1.10-alpine3.8 as builder
-
+FROM golang:alpine as builder
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/' /etc/apk/repositories && sed -i 's/http:/https:/' /etc/apk/repositories
 RUN set -eu; apk --no-cache add \
              gcc \
              git \
@@ -21,8 +21,8 @@ RUN set -eu; TAGS="$GITEA_BUILD_TAGS" make generate build
 
 FROM alpine:3.8
 
-LABEL maintainer="Piotr Orzechowski [orzechowski.tech]"
-
+FROM alpine
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.tuna.tsinghua.edu.cn/' /etc/apk/repositories && sed -i 's/http:/https:/' /etc/apk/repositories
 RUN set -eu; apk --no-cache add \
              bash \
              ca-certificates \
