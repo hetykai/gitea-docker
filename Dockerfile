@@ -16,7 +16,7 @@ ARG GITEA_REPO_URL="https://github.com/go-gitea/gitea.git"
 RUN set -eu; git clone --branch "v${GITEA_VERSION}" --depth 1 --no-checkout "$GITEA_REPO_URL" .; \
              git checkout "$GITEA_CHECKSUM"
 
-ARG GITEA_BUILD_TAGS="bindata sqlite"
+ARG GITEA_BUILD_TAGS="bindata sqlite sqlite_unlock_notify"
 RUN set -eu; TAGS="$GITEA_BUILD_TAGS" make generate build
 
 FROM alpine
