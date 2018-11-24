@@ -10,3 +10,5 @@ docker build \
   -t "$image_name:latest" \
   -t "$image_name:$gitea_version" \
   .
+
+docker push $image_name:latest $image_name:$gitea_version
