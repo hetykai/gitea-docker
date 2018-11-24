@@ -11,10 +11,9 @@ ENV SRC_DIR="${GOPATH}/src/code.gitea.io/gitea"
 WORKDIR "$SRC_DIR"
 
 ARG GITEA_VERSION
-ARG GITEA_CHECKSUM
 ARG GITEA_REPO_URL="https://github.com/go-gitea/gitea.git"
-RUN set -eu; git clone --branch "v${GITEA_VERSION}" --depth 1 --no-checkout "$GITEA_REPO_URL" .; \
-             git checkout "$GITEA_CHECKSUM"
+RUN set -eu; git clone --branch "${GITEA_VERSION}" --depth 1 --no-checkout "$GITEA_REPO_URL" .; \
+             git checkout "$GITEA_VERSION"
 
 ARG GITEA_BUILD_TAGS="bindata sqlite sqlite_unlock_notify"
 RUN set -eu; TAGS="$GITEA_BUILD_TAGS" make generate build
