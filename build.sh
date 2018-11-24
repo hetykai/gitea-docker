@@ -7,5 +7,8 @@ repoName='hety/gitea'
 
 docker build \
   --build-arg GITEA_VERSION="$gitea_version" \
+  -t "$repoName:latest" \
   -t "$repoName:$gitea_version" \
   .
+
+docker push $repoName:$gitea_version
