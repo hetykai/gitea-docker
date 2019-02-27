@@ -1,4 +1,4 @@
-FROM golang:1.11-alpine3.9 as builder
+FROM golang:1.12-alpine3.9 as builder
 
 RUN set -eu; apk --no-cache add \
              gcc \
