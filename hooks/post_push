@@ -1,0 +1,5 @@
+#!/bin/sh
+
+set -eu
+
+docker inspect --format='{{index .RepoDigests 0}}' "$IMAGE_NAME"
