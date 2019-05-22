@@ -11,12 +11,12 @@ ENV GOPATH="/go"
 ENV SRC_DIR="${GOPATH}/src/code.gitea.io/gitea"
 WORKDIR "$SRC_DIR"
 
-ARG GITEA_VERSION
-ARG GITEA_CHECKSUM
-ARG GITEA_REPO_URL="https://github.com/go-gitea/gitea.git"
+ARG gitea_version
+ARG gitea_checksum
+ARG gitea_repo_url="https://github.com/go-gitea/gitea.git"
 RUN set -eu; \
-    git clone --branch "v${GITEA_VERSION}" --depth 1 --no-checkout "$GITEA_REPO_URL" .; \
-    git checkout "$GITEA_CHECKSUM"
+    git clone --branch "v${gitea_version}" --depth 1 --no-checkout "$gitea_repo_url" .; \
+    git checkout "$gitea_checksum"
 
 ARG GITEA_BUILD_TAGS="bindata sqlite"
 RUN set -eu; \
@@ -24,7 +24,8 @@ RUN set -eu; \
 
 FROM alpine:3.9
 
-LABEL maintainer="Piotr Orzechowski [orzechowski.tech]"
+ARG source
+LABEL maintainer='Piotr Orzechowski [orzechowski.tech]' source="$source"
 
 RUN set -eu; \
     apk --no-cache add \
