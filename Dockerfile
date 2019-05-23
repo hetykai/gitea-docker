@@ -46,8 +46,8 @@ RUN set -euo pipefail; \
     echo "root:$(strings /dev/urandom | tr -d '[:cntrl:]' | head -c 128)" | chpasswd; \
     echo "git:$(strings /dev/urandom | tr -d '[:cntrl:]' | head -c 128)" | chpasswd
 
-COPY --from=builder "/go/src/code.gitea.io/gitea/gitea" "/usr/local/bin/gitea"
 COPY files /
+COPY --from=builder "/go/src/code.gitea.io/gitea/gitea" "/usr/local/bin/gitea"
 
 RUN set -eu; \
     mkdir '/service'; \
