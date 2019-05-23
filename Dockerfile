@@ -27,7 +27,7 @@ FROM alpine:3.9
 ARG source
 LABEL maintainer='Piotr Orzechowski [orzechowski.tech]' source="$source"
 
-RUN set -eu; \
+RUN set -euo pipefail; \
     apk --no-cache add \
         bash \
         ca-certificates \
@@ -38,11 +38,9 @@ RUN set -eu; \
         s6 \
         sqlite \
         su-exec \
-        tzdata
-RUN set -eu; \
+        tzdata; \
     addgroup -S -g 1000 git; \
-    adduser -S -D -G git -u 1000 -s '/bin/bash' -H -h '/data/git' git
-RUN set -euo pipefail; \
+    adduser -S -D -G git -u 1000 -s '/bin/bash' -H -h '/data/git' git; \
     echo "root:$(strings /dev/urandom | tr -d '[:cntrl:]' | head -c 128)" | chpasswd; \
     echo "git:$(strings /dev/urandom | tr -d '[:cntrl:]' | head -c 128)" | chpasswd
 
