@@ -58,6 +58,6 @@ VOLUME ["/data"]
 
 ENV GITEA_CUSTOM="/data/gitea"
 
-ENTRYPOINT ["/usr/local/bin/entrypoint"]
+CMD ["/bin/s6-svscan", "/service"]
 
 EXPOSE 22 3000

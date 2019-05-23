@@ -1,9 +1,0 @@
-#!/bin/sh
-
-set -eu
-
-if [ $# -eq 0 ]; then
-  exec /bin/s6-svscan '/service'
-else
-  exec /sbin/su-exec "$@"
-fi
