@@ -49,6 +49,13 @@ RUN set -euo pipefail; \
 COPY --from=builder "/go/src/code.gitea.io/gitea/gitea" "/usr/local/bin/gitea"
 COPY files /
 
+RUN set -eu; \
+    mkdir '/service'; \
+    ln -s '/etc/s6/.s6-svscan' '/service/.s6-svscan'; \
+    ln -s '/etc/s6/syslogd' '/service/syslogd'; \
+    ln -s '/etc/s6/openssh' '/service/openssh'; \
+    ln -s '/etc/s6/gitea' '/service/gitea'
+
 VOLUME ["/data"]
 
 ENV GITEA_CUSTOM="/data/gitea"
