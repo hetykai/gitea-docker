@@ -24,4 +24,4 @@ fi
 
 export USER='git'
 
-exec /sbin/su-exec git /usr/local/bin/gitea web --pid '/var/run/gitea/gitea.pid'
+exec /sbin/su-exec 'git:git' /usr/local/bin/gitea web --pid '/var/run/gitea/gitea.pid'
