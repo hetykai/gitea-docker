@@ -10,14 +10,14 @@ for directory in '/data/git' "$GITEA_CUSTOM" "${GITEA_CUSTOM}/conf" '/var/run/gi
   if [ ! -d "$directory" ]; then
     /bin/echo "Creating ${directory} directory"
     /bin/mkdir "$directory"
-    /bin/chown git:git "$directory"
+    /bin/chown 'git:git' "$directory"
   fi
 done
 
 if [ ! -f "${GITEA_CUSTOM}/conf/app.ini" ]; then
   /bin/echo 'Copying default app.ini'
   /bin/cp '/etc/gitea/default.ini' "${GITEA_CUSTOM}/conf/app.ini"
-  /bin/chown git:git "${GITEA_CUSTOM}/conf/app.ini"
+  /bin/chown 'git:git' "${GITEA_CUSTOM}/conf/app.ini"
 fi
 
 # run
