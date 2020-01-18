@@ -1,4 +1,4 @@
-FROM golang:1.13-alpine3.10 as builder
+FROM golang:1.13-alpine3.11 as builder
 
 RUN set -eu; \
     apk --no-cache add \
@@ -22,7 +22,7 @@ ARG GITEA_BUILD_TAGS="bindata sqlite"
 RUN set -eu; \
     TAGS="$GITEA_BUILD_TAGS" make generate build
 
-FROM alpine:3.10
+FROM alpine:3.11
 
 ARG source
 LABEL maintainer='Piotr Orzechowski [orzechowski.tech]' source="$source"
