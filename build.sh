@@ -7,7 +7,7 @@ repoName='hety/gitea'
 echo "######################### Auto build latest($gitea_version) gitea docker image #########################"
 docker build \
   --build-arg GITEA_VERSION="$gitea_version" \
-  -t "$repoName:latest" \
+  -t "$repoName" \
   -t "$repoName:$gitea_version" \
   .
 
